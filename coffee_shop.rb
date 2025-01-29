@@ -31,6 +31,6 @@ class CoffeeShop
   private
 
   def clean_up
-    puts "There are 0 orders remaining!"
+    puts "There are #{@orders.count} orders remaining!"
   end
 end
