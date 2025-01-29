@@ -4,7 +4,7 @@ class Inventory
   end
   
   def has_enough_supplies?(count)
-    @supply_count == count
+    @supply_count >= count
   end
   
   def use_supplies(count)
