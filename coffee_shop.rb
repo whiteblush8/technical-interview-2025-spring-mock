@@ -7,7 +7,7 @@ class CoffeeShop
     @inventory = Inventory.new
   end
 
-  def self.lace_order(type, size)
+  def self.place_order(type, size)
     coffee = Coffee.new(type, size) 
     puts "📖 Placed order for a #{coffee.description}"  
     @orders.push(coffee)
@@ -16,16 +16,16 @@ class CoffeeShop
   def fulfill_orders
     puts "🔄 Fulfilling orders..."
 
-    orders.each do |coffee|
-      if !@inventory.has_enough_supplies?(1)
+    @orders.each do |coffee|
+      if !@inventory.has_enough_supplies?(coffee)
         @inventory.use_supplies(1)
         puts "✅ Fulfilled order for #{coffee.description}"
       else
-        puts "❌ Insuficient supplies for #{coffee.description}"
+        puts "❌ Insufficient supplies for #{coffee.description}"
       end
     end
 
-    orders.clean_up
+    clean_up
   end
 
   private
